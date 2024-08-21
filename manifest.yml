@@ -1,0 +1,26 @@
+modules:
+  jira:issuePanel:
+    - key: summarizer-hello-world-issue-panel
+      resource: main
+      resolver:
+        function: resolver
+      render: native
+      title: summarizer\
+      icon: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: main
+    path: src/frontend/index.jsx
+permissions:
+  scopes:
+    - 'read:jira-work'
+  external:
+    fetch:
+      backend:
+        - 'api.openai.com'
+app:
+  runtime:
+    name: nodejs18.x
+  id: ari:cloud:ecosystem::app/076b346a-5206-496a-959c-53d1a449665d
